@@ -7,4 +7,8 @@
     <RootNamespace>Asp_net_web_api_template</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,7 @@
+using Contracts;
 using Microsoft.AspNetCore.Mvc;
+using NLog.Fluent;
+using System.Diagnostics;
 
 namespace Asp_net_web_api_template.Controllers
 {
@@ -11,9 +14,9 @@ namespace Asp_net_web_api_template.Controllers
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILoggerManager _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILoggerManager logger)
         {
             _logger = logger;
         }
@@ -21,6 +24,11 @@ namespace Asp_net_web_api_template.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            _logger.LogInfo("Testing info log.");
+            _logger.LogDebug("Testing debug log.");
+            _logger.LogWarn("Testing warn log.");
+            _logger.LogError("Testing error log.");
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
