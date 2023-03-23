@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Service.Contracts
 {
-    internal interface IBookingService
+    public interface IBookingService
     {
     }
 }

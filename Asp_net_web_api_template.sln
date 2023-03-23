@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asp net web api template", "Asp net web api template\Asp net web api template.csproj", "{9DC6BED3-895C-4C32-922F-877BCE8ED071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asp net web api template", "Asp net web api template\Asp net web api template.csproj", "{9DC6BED3-895C-4C32-922F-877BCE8ED071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{1EFD802F-EB70-4D6E-8B96-3250A666654F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{1EFD802F-EB70-4D6E-8B96-3250A666654F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{C9DD5005-A9C9-42AF-A924-CBF8559F68F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "LoggerService\LoggerService.csproj", "{C9DD5005-A9C9-42AF-A924-CBF8559F68F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{1678BACD-D5D4-4FDB-9C3D-659F0CBC72F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{1678BACD-D5D4-4FDB-9C3D-659F0CBC72F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{FB17FD35-0874-4502-904D-65E7AE721A43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{FB17FD35-0874-4502-904D-65E7AE721A43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Contracts", "Service.Contracts\Service.Contracts.csproj", "{8822FFF8-86DD-4FE2-8222-F2B45C25AA86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{43D5F0A3-32F4-44F6-A175-FA27DA8C64F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{FB17FD35-0874-4502-904D-65E7AE721A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB17FD35-0874-4502-904D-65E7AE721A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB17FD35-0874-4502-904D-65E7AE721A43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8822FFF8-86DD-4FE2-8222-F2B45C25AA86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8822FFF8-86DD-4FE2-8222-F2B45C25AA86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8822FFF8-86DD-4FE2-8222-F2B45C25AA86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8822FFF8-86DD-4FE2-8222-F2B45C25AA86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43D5F0A3-32F4-44F6-A175-FA27DA8C64F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43D5F0A3-32F4-44F6-A175-FA27DA8C64F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43D5F0A3-32F4-44F6-A175-FA27DA8C64F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43D5F0A3-32F4-44F6-A175-FA27DA8C64F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
