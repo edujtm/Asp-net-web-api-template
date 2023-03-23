@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Repository;
 
-namespace Asp_net_web_api_template.Contextfactory
+namespace Asp_net_web_api_template.ContextFactory
 {
     public class RepositoryContextFactory : IDesignTimeDbContextFactory<RepositoryContext>
     {

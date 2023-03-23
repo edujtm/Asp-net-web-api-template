@@ -3,7 +3,7 @@ using Entities.Models;
 
 namespace Repository
 {
-    internal class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository
+    public class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository
     {
         public CustomerRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
