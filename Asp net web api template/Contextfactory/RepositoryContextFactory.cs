@@ -1,0 +1,22 @@
+﻿using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.EntityFrameworkCore;
+using Repository;
+
+namespace Asp_net_web_api_template.Contextfactory
+{
+    public class RepositoryContextFactory : IDesignTimeDbContextFactory<RepositoryContext>
+    {
+        public RepositoryContext CreateDbContext(string[] args)
+        {
+            var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json")
+            .Build();
+
+            var builder = new DbContextOptionsBuilder<RepositoryContext>()
+            .UseSqlServer(configuration.GetConnectionString("sqlConnection"), b => b.MigrationsAssembly("Asp net web api template"));
+
+            return new RepositoryContext(builder.Options);
+        }
+    }
+}
