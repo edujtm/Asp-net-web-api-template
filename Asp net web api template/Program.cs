@@ -10,10 +10,13 @@ LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nl
 
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+        .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
 builder.Services.ConfigureCors();
 builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 var app = builder.Build();
 

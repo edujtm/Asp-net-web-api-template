@@ -8,5 +8,10 @@ namespace Repository
         public CustomerRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
         }
+
+        public IEnumerable<Customer> GetAll(bool trackChanges)
+        {
+            return FindAll(trackChanges).OrderBy(c => c.Name).ToList();
+        }
     }
 }

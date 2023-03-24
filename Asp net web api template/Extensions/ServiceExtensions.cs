@@ -3,6 +3,7 @@ using LoggerService;
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using Service.Contracts;
+using Services;
 
 namespace Asp_net_web_api_template.Extensions
 {
@@ -25,7 +26,7 @@ namespace Asp_net_web_api_template.Extensions
             services.AddScoped<IRepositoryManager, RepositoryManager>();
 
         public static void ConfigureServiceManager(this IServiceCollection services) =>
-            services.AddScoped<IServiceManager, IServiceManager>();
+            services.AddScoped<IServiceManager, ServiceManager>();
 
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<RepositoryContext>(opts =>
