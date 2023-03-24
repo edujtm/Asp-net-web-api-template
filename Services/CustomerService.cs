@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Contracts;
+using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DTOs;
@@ -21,16 +22,15 @@ namespace Services
 
         public IEnumerable<CustomerDto> GetAll(bool trackChanges)
         {
-            try
-            {
-                var customers = _repository.CustomerRepository.GetAll(trackChanges);
-                return _mapper.Map<IEnumerable<CustomerDto>>(customers);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(CustomerService)} > {nameof(GetAll)} service method {ex}.");
-                throw;
-            }
+            var customers = _repository.CustomerRepository.GetAll(trackChanges);
+            return _mapper.Map<IEnumerable<CustomerDto>>(customers);
+        }
+
+        public CustomerDto GetById(Guid Id, bool trackChanges)
+        {
+            var customer = _repository.CustomerRepository.GetById(Id, trackChanges);
+            if (customer == null) { throw new ResourceNotFoundException(Id); }
+            return _mapper.Map<CustomerDto>(customer);
         }
     }
 }

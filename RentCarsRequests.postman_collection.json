@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "f7c1a82c-83fa-400e-82ba-b29240c1ca67",
+		"name": "RentCarsRequests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Bookings",
+					"item": [
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7239",
+									"path": [
+										"api",
+										"customers",
+										"2c52045b-b323-424e-bf04-c27dcc2e0a33",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings/9987b490-5b67-41b8-a9d6-9cc45b50481d",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7239",
+									"path": [
+										"api",
+										"customers",
+										"2c52045b-b323-424e-bf04-c27dcc2e0a33",
+										"bookings",
+										"9987b490-5b67-41b8-a9d6-9cc45b50481d"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7239/api/customers",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById (valid)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7239/api/customers/20C11B5C-243C-4E41-ACFF-A2F1072AEE2F",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"customers",
+								"20C11B5C-243C-4E41-ACFF-A2F1072AEE2F"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById (invalid)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7239/api/customers/20C11B5C-243C-4E41-ACFF-A2F1072AEE22",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"customers",
+								"20C11B5C-243C-4E41-ACFF-A2F1072AEE22"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

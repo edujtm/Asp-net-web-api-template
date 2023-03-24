@@ -9,22 +9,21 @@ namespace Presentation.Controllers
     {
         private readonly IServiceManager _serviceManager;
 
-        public CustomerController(IServiceManager serviceManager) 
+        public CustomerController(IServiceManager serviceManager)
         {
             _serviceManager = serviceManager;
         }
 
         [HttpGet]
-        public IActionResult GetAll() 
+        public IActionResult GetAll()
         {
-            try
-            {
-                return Ok(_serviceManager.CustomerService.GetAll(trackChanges: false));
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "Internal Server Error.");
-            }
+            return Ok(_serviceManager.CustomerService.GetAll(trackChanges: false));
+        }
+
+        [HttpGet("{id:guid}")]
+        public IActionResult GetById(Guid Id)
+        {
+            return Ok(_serviceManager.CustomerService.GetById(Id, trackChanges: false));
         }
     }
 }
