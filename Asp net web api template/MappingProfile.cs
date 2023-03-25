@@ -31,8 +31,13 @@ namespace Asp_net_web_api_template
                         (int)BookingStatusEnum.Finished => "Finished",
                         _ => "Error"
                     };
-                }))
-                ;
+                }));
+
+            CreateMap<CustomerCreationDto, Customer>();
+            CreateMap<BookingCreationDto, Booking>();
+
+            CreateMap<Vehicle, VehicleDto>();
+            CreateMap<VehicleCreationDto, Vehicle>();
         }
     }
 }

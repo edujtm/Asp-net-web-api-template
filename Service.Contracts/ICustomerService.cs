@@ -6,5 +6,7 @@ namespace Service.Contracts
     {
         IEnumerable<CustomerDto> GetAll(bool trackChanges);
         CustomerDto GetById(Guid Id, bool trackChanges);
+        CustomerDto Create(CustomerCreationDto customerCreationDto);
+        void DeleteCustomer(Guid Id, bool trackChanges);
     }
 }

@@ -18,5 +18,12 @@ namespace Repository
         {
             return FindByCondition(x => x.Id.Equals(Id), trackChanges: trackChanges).SingleOrDefault();
         }
+
+        public void CreateCustomer(Customer customer) => Create(customer);
+
+        public void DeleteCustomer(Customer customer)
+        {
+            Delete(customer);
+        }
     }
 }

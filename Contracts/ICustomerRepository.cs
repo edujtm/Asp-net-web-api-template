@@ -6,5 +6,7 @@ namespace Contracts
     {
         IEnumerable<Customer> GetAll(bool trackChanges);
         Customer GetById(Guid Id, bool trackChanges);
+        void Create(Customer customer);
+        void DeleteCustomer(Customer customer);
     }
 }
