@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DTOs;
 
@@ -40,6 +41,32 @@ namespace Presentation.Controllers
         public IActionResult Delete(Guid Id)
         {
             _serviceManager.CustomerService.DeleteCustomer(Id, false);
+            return NoContent();
+        }
+
+        [HttpPut("{id:guid}")]
+        public IActionResult Update(Guid id, [FromBody] CustomerUpdateDto customerDto)
+        {
+            if (customerDto is null)
+                return BadRequest("Object is null");
+
+            _serviceManager.CustomerService.UpdateCustomer(id, customerDto, trackChanges: true);
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id:guid}")]
+        public IActionResult Patch(Guid id, [FromBody] JsonPatchDocument<CustomerUpdateDto> patchDoc)
+        {
+            if (patchDoc is null)
+                return BadRequest("patchDoc object sent from client is null.");
+
+            var result = _serviceManager.CustomerService.GetCustomerForPatch(id, trackChanges: true);
+
+            patchDoc.ApplyTo(result.customerPatchDto);
+
+            _serviceManager.CustomerService.Patch(result.customerPatchDto, result.customer);
+
             return NoContent();
         }
 

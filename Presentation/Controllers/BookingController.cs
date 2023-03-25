@@ -23,12 +23,12 @@ namespace Presentation.Controllers
             return Ok(_serviceManager.BookingService.GetById(customerId, Id, trackChanges: false));
         }
 
-        [HttpPost("vehicles/{vehicleId:guid}")]
-        public IActionResult Create(Guid customerId, Guid VehicleId, [FromBody] BookingCreationDto bookingCreationDto)
+        [HttpPost]
+        public IActionResult Create(Guid customerId, [FromBody] BookingCreationDto bookingCreationDto)
         {
             if (bookingCreationDto == null) { return BadRequest("Booking object mustn't be null."); }
 
-            var result = _serviceManager.BookingService.Create(customerId, VehicleId, bookingCreationDto, false);
+            var result = _serviceManager.BookingService.Create(customerId, bookingCreationDto, false);
 
             return CreatedAtRoute("GetBookingByCustomerId", new { customerId, id = result.Id }, result);
         }

@@ -55,6 +55,60 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"From\": \"2023-03-24\",\r\n    \"To\": \"2023-04-01\",\r\n    \"PaymentReceived\": true,\r\n    \"vehicleId\": \"acf49e7d-4d0c-4ea0-b3cc-9aee88b88a7a\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7239",
+									"path": [
+										"api",
+										"customers",
+										"2c52045b-b323-424e-bf04-c27dcc2e0a33",
+										"bookings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings/9987b490-5b67-41b8-a9d6-9cc45b50481d",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7239",
+									"path": [
+										"api",
+										"customers",
+										"2c52045b-b323-424e-bf04-c27dcc2e0a33",
+										"bookings",
+										"9987b490-5b67-41b8-a9d6-9cc45b50481d"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -100,12 +154,41 @@
 					"response": []
 				},
 				{
-					"name": "GetById (invalid)",
+					"name": "Create",
 					"request": {
-						"method": "GET",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Delete Test\",\r\n    \"email\": \"fc@email.com\",\r\n    \"dateBirth\": \"1992-01-01\",\r\n    \"gender\": 1,\r\n    \"Address\": \"some street from some city from some country\",\r\n    \"details\": \"nothing to say\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7239/api/customers",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7239/api/customers/20C11B5C-243C-4E41-ACFF-A2F1072AEE22",
+							"raw": "https://localhost:7239/api/customers/26483254-2974-4035-f95b-08db2d2e71aa",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -114,7 +197,153 @@
 							"path": [
 								"api",
 								"customers",
-								"20C11B5C-243C-4E41-ACFF-A2F1072AEE22"
+								"26483254-2974-4035-f95b-08db2d2e71aa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"20c11b5c-243c-4e41-acff-a2f1072aee2f\",\r\n    \"name\": \"Cricrana da silva\",\r\n    \"email\": \"cricrana@email.com\",\r\n    \"address\": \"Av. Nevaldo Rocha, 3775 - Tirol, Natal - RN, 59015-450\",\r\n    \"dateBirth\": \"1980-01-01\",\r\n    \"bookings\": [\r\n        {\r\n            \"From\": \"2023-05-25\",\r\n            \"To\": \"2023-06-26\",\r\n            \"PaymentReceived\": true,\r\n            \"vehicleId\": \"ACF49E7D-4D0C-4EA0-B3CC-9AEE88B88A7A\"\r\n        },\r\n        {\r\n            \"From\": \"2023-03-24\",\r\n            \"To\": \"2023-04-01\",\r\n            \"PaymentReceived\": false,\r\n            \"vehicleId\": \"AFB387CD-9CA2-4FE6-AFF2-A2163C92CB59\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7239/api/customers/20C11B5C-243C-4E41-ACFF-A2F1072AEE2F",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"customers",
+								"20C11B5C-243C-4E41-ACFF-A2F1072AEE2F"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json-patch+json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"op\": \"replace\",\r\n        \"path\": \"/dateBirth\",\r\n        \"value\": \"1960-02-02\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7239/api/customers/20C11B5C-243C-4E41-ACFF-A2F1072AEE2F",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"customers",
+								"20C11B5C-243C-4E41-ACFF-A2F1072AEE2F"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicles",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7239/api/vehicles",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById (valid)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7239/api/vehicles/3462f9e4-2bda-4d44-af37-5521a76f1419",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"vehicles",
+								"3462f9e4-2bda-4d44-af37-5521a76f1419"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mileage\": 45000,\r\n    \"model\": \"Clio\",\r\n    \"manufacturer\": \"Renault\",\r\n    \"category\": 1,\r\n    \"color\": 1,\r\n    \"dailyRentalFee\": 135\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7239/api/vehicles",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"vehicles"
 							]
 						}
 					},

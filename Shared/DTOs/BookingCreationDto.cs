@@ -1,5 +1,5 @@
 ﻿
 namespace Shared.DTOs
 {
-    public record BookingCreationDto(string From, string To, bool PaymentReceived);
+    public record BookingCreationDto(string From, string To, bool PaymentReceived, Guid VehicleId);
 }

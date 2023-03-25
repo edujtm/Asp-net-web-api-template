@@ -9,10 +9,9 @@ namespace Repository
         {
         }
 
-        public void Create(Guid CustomerId, Guid vehicleId, Booking booking)
+        public void Create(Guid CustomerId, Booking booking)
         {
             booking.CustomerId = CustomerId;
-            booking.VehicleId = vehicleId;
             Create(booking);
         }
 

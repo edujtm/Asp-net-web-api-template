@@ -20,17 +20,17 @@ namespace Services
             _mapper = mapper;
         }
 
-        public BookingDto Create(Guid customerId, Guid vehicleId, BookingCreationDto bookingCreationDto, bool trackChanges)
+        public BookingDto Create(Guid customerId, BookingCreationDto bookingCreationDto, bool trackChanges)
         {
             var customer = _repositoryManager.CustomerRepository.GetById(customerId, trackChanges: trackChanges);
             if (customer == null) { throw new ResourceNotFoundException(customerId); }
 
-            var vehicle = _repositoryManager.VehicleRepository.GetById(vehicleId, trackChanges: trackChanges);
-            if (vehicle == null) { throw new ResourceNotFoundException(vehicleId); }
+            var vehicle = _repositoryManager.VehicleRepository.GetById(bookingCreationDto.VehicleId, trackChanges: trackChanges);
+            if (vehicle == null) { throw new ResourceNotFoundException(bookingCreationDto.VehicleId); }
 
             var booking = _mapper.Map<Booking>(bookingCreationDto);
 
-            _repositoryManager.BookingRepository.Create(customer.Id, vehicle.Id, booking);
+            _repositoryManager.BookingRepository.Create(customer.Id, booking);
             _repositoryManager.Save();
 
             return _mapper.Map<BookingDto>(booking);

@@ -29,11 +29,14 @@ namespace Asp_net_web_api_template
                         (int)BookingStatusEnum.OnProcessing => "Choosing a rent option on site",
                         (int)BookingStatusEnum.Rent => "Currently rent",
                         (int)BookingStatusEnum.Finished => "Finished",
+                        (int)BookingStatusEnum.Canceled => "Canceled",
                         _ => "Error"
                     };
                 }));
 
             CreateMap<CustomerCreationDto, Customer>();
+            CreateMap<CustomerUpdateDto, Customer>().ReverseMap();
+
             CreateMap<BookingCreationDto, Booking>();
 
             CreateMap<Vehicle, VehicleDto>();

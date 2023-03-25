@@ -5,6 +5,7 @@ namespace Entities.Enums
     {
         OnProcessing = 0,
         Rent = 1,
-        Finished = 2
+        Finished = 2,
+        Canceled = 3
     }
 }
