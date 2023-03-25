@@ -9,110 +9,6 @@
 			"name": "Customers",
 			"item": [
 				{
-					"name": "Bookings",
-					"item": [
-						{
-							"name": "GetAll",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings",
-									"protocol": "https",
-									"host": [
-										"localhost"
-									],
-									"port": "7239",
-									"path": [
-										"api",
-										"customers",
-										"2c52045b-b323-424e-bf04-c27dcc2e0a33",
-										"bookings"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GetById",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings/9987b490-5b67-41b8-a9d6-9cc45b50481d",
-									"protocol": "https",
-									"host": [
-										"localhost"
-									],
-									"port": "7239",
-									"path": [
-										"api",
-										"customers",
-										"2c52045b-b323-424e-bf04-c27dcc2e0a33",
-										"bookings",
-										"9987b490-5b67-41b8-a9d6-9cc45b50481d"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"From\": \"2023-03-24\",\r\n    \"To\": \"2023-04-01\",\r\n    \"PaymentReceived\": true,\r\n    \"vehicleId\": \"acf49e7d-4d0c-4ea0-b3cc-9aee88b88a7a\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings",
-									"protocol": "https",
-									"host": [
-										"localhost"
-									],
-									"port": "7239",
-									"path": [
-										"api",
-										"customers",
-										"2c52045b-b323-424e-bf04-c27dcc2e0a33",
-										"bookings"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings/9987b490-5b67-41b8-a9d6-9cc45b50481d",
-									"protocol": "https",
-									"host": [
-										"localhost"
-									],
-									"port": "7239",
-									"path": [
-										"api",
-										"customers",
-										"2c52045b-b323-424e-bf04-c27dcc2e0a33",
-										"bookings",
-										"9987b490-5b67-41b8-a9d6-9cc45b50481d"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
 					"name": "GetAll",
 					"request": {
 						"method": "GET",
@@ -133,7 +29,7 @@
 					"response": []
 				},
 				{
-					"name": "GetById (valid)",
+					"name": "GetById",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -344,6 +240,110 @@
 							"path": [
 								"api",
 								"vehicles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"customers",
+								"2c52045b-b323-424e-bf04-c27dcc2e0a33",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings/9987b490-5b67-41b8-a9d6-9cc45b50481d",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"customers",
+								"2c52045b-b323-424e-bf04-c27dcc2e0a33",
+								"bookings",
+								"9987b490-5b67-41b8-a9d6-9cc45b50481d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"From\": \"2023-03-24\",\r\n    \"To\": \"2023-04-01\",\r\n    \"PaymentReceived\": true,\r\n    \"vehicleId\": \"acf49e7d-4d0c-4ea0-b3cc-9aee88b88a7a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"customers",
+								"2c52045b-b323-424e-bf04-c27dcc2e0a33",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings/9987b490-5b67-41b8-a9d6-9cc45b50481d",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"customers",
+								"2c52045b-b323-424e-bf04-c27dcc2e0a33",
+								"bookings",
+								"9987b490-5b67-41b8-a9d6-9cc45b50481d"
 							]
 						}
 					},

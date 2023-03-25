@@ -3,9 +3,9 @@ namespace Entities.Enums
 {
     public enum VehicleCategoryEnum
     {
-        Suv = 0,
-        Crossover = 1,
-        Sedan = 2,
-        Minivan = 3
+        Suv = 1,
+        Crossover = 2,
+        Sedan = 3,
+        Minivan = 4
     }
 }

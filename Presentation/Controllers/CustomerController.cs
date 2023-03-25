@@ -33,6 +33,10 @@ namespace Presentation.Controllers
         {
             if (customerCreationDto is null)
                 return BadRequest("CompanyForCreationDto object is null");
+
+            if(!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
             var createdCustomer = _serviceManager.CustomerService.Create(customerCreationDto);
             return CreatedAtRoute("CustomerById", new { id = createdCustomer.Id }, createdCustomer);
         }
@@ -50,6 +54,9 @@ namespace Presentation.Controllers
             if (customerDto is null)
                 return BadRequest("Object is null");
 
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
             _serviceManager.CustomerService.UpdateCustomer(id, customerDto, trackChanges: true);
 
             return NoContent();
@@ -63,7 +70,12 @@ namespace Presentation.Controllers
 
             var result = _serviceManager.CustomerService.GetCustomerForPatch(id, trackChanges: true);
 
-            patchDoc.ApplyTo(result.customerPatchDto);
+            patchDoc.ApplyTo(result.customerPatchDto, ModelState);
+
+            TryValidateModel(result.customerPatchDto);
+
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
 
             _serviceManager.CustomerService.Patch(result.customerPatchDto, result.customer);
 

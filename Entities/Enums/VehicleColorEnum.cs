@@ -3,6 +3,6 @@ namespace Entities.Enums
 {
     public enum VehicleColorEnum
     {
-        Red = 0, Green = 1, Blue = 2, Black = 3, White = 4,
+        Red = 1, Green = 2, Blue = 3, Black = 4, White = 5,
     }
 }
