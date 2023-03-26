@@ -9,28 +9,28 @@ namespace Presentation.Controllers
     public class VehicleController : ControllerBase
     {
         private readonly IServiceManager _serviceManager;
-        public VehicleController(IServiceManager serviceManager) => 
+        public VehicleController(IServiceManager serviceManager) =>
             _serviceManager = serviceManager;
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return Ok(_serviceManager.VehicleService.GetAll(trackChanges: false));
+            return Ok(await _serviceManager.VehicleService.GetAllAsync(trackChanges: false));
         }
 
         [HttpGet("{id:guid}", Name = "GetVehicleById")]
-        public IActionResult GetById(Guid Id)
+        public async Task<IActionResult> GetById(Guid Id)
         {
-            return Ok(_serviceManager.VehicleService.GetById(Id, trackChanges: false));
+            return Ok(await _serviceManager.VehicleService.GetByIdAsync(Id, trackChanges: false));
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] VehicleCreationDto vehicleCreationDto)
+        public async Task<IActionResult> Create([FromBody] VehicleCreationDto vehicleCreationDto)
         {
             if (vehicleCreationDto is null)
                 return BadRequest("Vehicle object is null.");
 
-            var createdVehicle = _serviceManager.VehicleService.Create(vehicleCreationDto);
+            var createdVehicle = await _serviceManager.VehicleService.CreateAsync(vehicleCreationDto);
             return CreatedAtRoute("GetVehicleById", new { id = createdVehicle.Id }, createdVehicle);
         }
     }

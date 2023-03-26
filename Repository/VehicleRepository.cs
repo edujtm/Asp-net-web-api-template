@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
@@ -9,14 +10,14 @@ namespace Repository
         {
         }
 
-        public IEnumerable<Vehicle> GetAll(bool trackChanges)
+        public async Task<IEnumerable<Vehicle>> GetAllAsync(bool trackChanges)
         {
-            return FindAll(trackChanges).OrderBy(c => c.Model).ToList();
+            return await FindAll(trackChanges).OrderBy(c => c.Model).ToListAsync();
         }
 
-        public Vehicle GetById(Guid Id, bool trackChanges)
+        public async Task<Vehicle> GetByIdAsync(Guid Id, bool trackChanges)
         {
-            return FindByCondition(x => x.Id.Equals(Id), trackChanges: trackChanges).SingleOrDefault();
+            return await FindByCondition(x => x.Id.Equals(Id), trackChanges: trackChanges).SingleOrDefaultAsync();
         }
 
         public void CreateVehicle(Vehicle vehicle) => Create(vehicle);

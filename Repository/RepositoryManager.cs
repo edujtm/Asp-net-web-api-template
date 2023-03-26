@@ -28,9 +28,9 @@ namespace Repository
 
         public IBookingRepository BookingRepository => _bookingRepository.Value;
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            _repositoryContext.SaveChanges();
+            await _repositoryContext.SaveChangesAsync();
         }
     }
 }

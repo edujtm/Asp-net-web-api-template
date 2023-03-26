@@ -6,8 +6,8 @@ namespace Service.Contracts
 {
     public interface IVehicleService
     {
-        IEnumerable<VehicleDto> GetAll(bool trackChanges);
-        VehicleDto GetById(Guid Id, bool trackChanges);
-        VehicleDto Create(VehicleCreationDto vehicleCreationDto);
+        Task<IEnumerable<VehicleDto>> GetAllAsync(bool trackChanges);
+        Task<VehicleDto> GetByIdAsync(Guid Id, bool trackChanges);
+        Task<VehicleDto> CreateAsync(VehicleCreationDto vehicleCreationDto);
     }
 }

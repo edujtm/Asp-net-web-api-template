@@ -12,31 +12,31 @@ namespace Presentation.Controllers
         public BookingController(IServiceManager service) => _serviceManager = service;
 
         [HttpGet]
-        public IActionResult GetAll(Guid customerId)
+        public async Task<IActionResult> GetAll(Guid customerId)
         {
-            return Ok(_serviceManager.BookingService.GetAll(customerId, trackChanges: false));
+            return Ok(await _serviceManager.BookingService.GetAllAsync(customerId, trackChanges: false));
         }
 
         [HttpGet("{id:guid}", Name = "GetBookingByCustomerId")]
-        public IActionResult GetById(Guid customerId, Guid Id)
+        public async Task<IActionResult> GetById(Guid customerId, Guid Id)
         {
-            return Ok(_serviceManager.BookingService.GetById(customerId, Id, trackChanges: false));
+            return Ok(await _serviceManager.BookingService.GetByIdAsync(customerId, Id, trackChanges: false));
         }
 
         [HttpPost]
-        public IActionResult Create(Guid customerId, [FromBody] BookingCreationDto bookingCreationDto)
+        public async Task<IActionResult> Create(Guid customerId, [FromBody] BookingCreationDto bookingCreationDto)
         {
             if (bookingCreationDto == null) { return BadRequest("Booking object mustn't be null."); }
 
-            var result = _serviceManager.BookingService.Create(customerId, bookingCreationDto, false);
+            var result = await _serviceManager.BookingService.CreateAsync(customerId, bookingCreationDto, false);
 
             return CreatedAtRoute("GetBookingByCustomerId", new { customerId, id = result.Id }, result);
         }
 
         [HttpDelete("{id:guid}")]
-        public IActionResult Delete(Guid customerId, Guid Id) 
+        public async Task<IActionResult> Delete(Guid customerId, Guid Id)
         {
-            _serviceManager.BookingService.DeleteBooking(customerId, Id, false);
+            await _serviceManager.BookingService.DeleteBookingAsync(customerId, Id, false);
             return NoContent();
         }
     }

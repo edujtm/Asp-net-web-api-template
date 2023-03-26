@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
@@ -15,17 +16,17 @@ namespace Repository
             Create(booking);
         }
 
-        public IEnumerable<Booking> GetAll(Guid CustomerId, bool trackChanges)
+        public async Task<IEnumerable<Booking>> GetAllAsync(Guid CustomerId, bool trackChanges)
         {
-            return FindByCondition(x => x.CustomerId.Equals(CustomerId), trackChanges: trackChanges)
-                .ToList();
+            return await FindByCondition(x => x.CustomerId.Equals(CustomerId), trackChanges: trackChanges)
+                .ToListAsync();
         }
 
-        public Booking GetById(Guid CustomerId, Guid Id, bool trackChanges)
+        public async Task<Booking> GetByIdAsync(Guid CustomerId, Guid Id, bool trackChanges)
         {
-            return FindByCondition(x => x.CustomerId.Equals(CustomerId) &&
+            return await FindByCondition(x => x.CustomerId.Equals(CustomerId) &&
                     x.Id.Equals(Id), trackChanges: trackChanges)
-                .SingleOrDefault();
+                .SingleOrDefaultAsync();
         }
 
         public void DeleteBooking(Booking booking)

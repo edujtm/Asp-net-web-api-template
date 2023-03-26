@@ -6,6 +6,6 @@ namespace Contracts
         ICustomerRepository CustomerRepository { get; }
         IVehicleRepository VehicleRepository { get; }   
         IBookingRepository BookingRepository { get; }   
-        void Save();
+        Task SaveAsync();
     }
 }

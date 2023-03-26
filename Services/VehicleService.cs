@@ -20,25 +20,25 @@ namespace Services
             _mapper = mapper;
         }
 
-        public VehicleDto Create(VehicleCreationDto vehicleCreationDto)
+        public async Task<VehicleDto> CreateAsync(VehicleCreationDto vehicleCreationDto)
         {
             var vehicle = _mapper.Map<Vehicle>(vehicleCreationDto);
 
             _repositoryManager.VehicleRepository.Create(vehicle);
-            _repositoryManager.Save();
+            await _repositoryManager.SaveAsync();
 
             return _mapper.Map<VehicleDto>(vehicle);
         }
 
-        public IEnumerable<VehicleDto> GetAll(bool trackChanges)
+        public async Task<IEnumerable<VehicleDto>> GetAllAsync(bool trackChanges)
         {
-            var vehicles = _repositoryManager.VehicleRepository.GetAll(trackChanges);
+            var vehicles = await _repositoryManager.VehicleRepository.GetAllAsync(trackChanges);
             return _mapper.Map<IEnumerable<VehicleDto>>(vehicles);
         }
 
-        public VehicleDto GetById(Guid Id, bool trackChanges)
+        public async Task<VehicleDto> GetByIdAsync(Guid Id, bool trackChanges)
         {
-            var vehicle = _repositoryManager.VehicleRepository.GetById(Id, trackChanges);
+            var vehicle = await _repositoryManager.VehicleRepository.GetByIdAsync(Id, trackChanges);
             if (vehicle is null) { throw new ResourceNotFoundException(Id); }
             return _mapper.Map<VehicleDto>(vehicle);
         }

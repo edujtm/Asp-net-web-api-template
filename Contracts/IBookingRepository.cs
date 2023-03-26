@@ -5,8 +5,8 @@ namespace Contracts
 {
     public interface IBookingRepository
     {
-        IEnumerable<Booking> GetAll(Guid CustomerId, bool trackChanges);
-        Booking GetById(Guid CustomerId, Guid Id, bool trackChanges);
+        Task<IEnumerable<Booking>> GetAllAsync(Guid CustomerId, bool trackChanges);
+        Task<Booking> GetByIdAsync(Guid CustomerId, Guid Id, bool trackChanges);
         void Create(Guid CustomerId, Booking booking);
         void DeleteBooking(Booking booking);
     }

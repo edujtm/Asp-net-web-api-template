@@ -17,39 +17,39 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return Ok(_serviceManager.CustomerService.GetAll(trackChanges: false));
+            return Ok(await _serviceManager.CustomerService.GetAllAsync(trackChanges: false));
         }
 
         [HttpGet("{id:guid}", Name = "CustomerById")]
-        public IActionResult GetById(Guid Id)
+        public async Task<IActionResult> GetById(Guid Id)
         {
-            return Ok(_serviceManager.CustomerService.GetById(Id, trackChanges: false));
+            return Ok(await _serviceManager.CustomerService.GetByIdAsync(Id, trackChanges: false));
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CustomerCreationDto customerCreationDto)
+        public async Task<IActionResult> Create([FromBody] CustomerCreationDto customerCreationDto)
         {
             if (customerCreationDto is null)
                 return BadRequest("CompanyForCreationDto object is null");
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
-            var createdCustomer = _serviceManager.CustomerService.Create(customerCreationDto);
+            var createdCustomer = await _serviceManager.CustomerService.CreateAsync(customerCreationDto);
             return CreatedAtRoute("CustomerById", new { id = createdCustomer.Id }, createdCustomer);
         }
 
         [HttpDelete("{id:guid}")]
-        public IActionResult Delete(Guid Id)
+        public async Task<IActionResult> Delete(Guid Id)
         {
-            _serviceManager.CustomerService.DeleteCustomer(Id, false);
+            await _serviceManager.CustomerService.DeleteCustomerAsync(Id, false);
             return NoContent();
         }
 
         [HttpPut("{id:guid}")]
-        public IActionResult Update(Guid id, [FromBody] CustomerUpdateDto customerDto)
+        public async Task<IActionResult> Update(Guid id, [FromBody] CustomerUpdateDto customerDto)
         {
             if (customerDto is null)
                 return BadRequest("Object is null");
@@ -57,18 +57,18 @@ namespace Presentation.Controllers
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
-            _serviceManager.CustomerService.UpdateCustomer(id, customerDto, trackChanges: true);
+            await _serviceManager.CustomerService.UpdateCustomerAsync(id, customerDto, trackChanges: true);
 
             return NoContent();
         }
 
         [HttpPatch("{id:guid}")]
-        public IActionResult Patch(Guid id, [FromBody] JsonPatchDocument<CustomerUpdateDto> patchDoc)
+        public async Task<IActionResult> Patch(Guid id, [FromBody] JsonPatchDocument<CustomerUpdateDto> patchDoc)
         {
             if (patchDoc is null)
                 return BadRequest("patchDoc object sent from client is null.");
 
-            var result = _serviceManager.CustomerService.GetCustomerForPatch(id, trackChanges: true);
+            var result = await _serviceManager.CustomerService.GetCustomerForPatchAsync(id, trackChanges: true);
 
             patchDoc.ApplyTo(result.customerPatchDto, ModelState);
 
@@ -77,7 +77,7 @@ namespace Presentation.Controllers
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
-            _serviceManager.CustomerService.Patch(result.customerPatchDto, result.customer);
+            await _serviceManager.CustomerService.PatchAsync(result.customerPatchDto, result.customer);
 
             return NoContent();
         }

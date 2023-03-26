@@ -5,8 +5,8 @@ namespace Contracts
 {
     public interface IVehicleRepository
     {
-        IEnumerable<Vehicle> GetAll(bool trackChanges);
-        Vehicle GetById(Guid Id, bool trackChanges);
+        Task<IEnumerable<Vehicle>> GetAllAsync(bool trackChanges);
+        Task<Vehicle> GetByIdAsync(Guid Id, bool trackChanges);
         void Create(Vehicle vehicle);
     }
 }

@@ -5,12 +5,12 @@ namespace Service.Contracts
 {
     public interface ICustomerService
     {
-        IEnumerable<CustomerDto> GetAll(bool trackChanges);
-        CustomerDto GetById(Guid Id, bool trackChanges);
-        CustomerDto Create(CustomerCreationDto customerCreationDto);
-        void DeleteCustomer(Guid Id, bool trackChanges);
-        void UpdateCustomer(Guid Id, CustomerUpdateDto customer, bool trackChanges);
-        (CustomerUpdateDto customerPatchDto, Customer customer) GetCustomerForPatch(Guid id, bool trackChanges);
-        void Patch(CustomerUpdateDto customerPatchDto, Customer customer);
+        Task<IEnumerable<CustomerDto>> GetAllAsync(bool trackChanges);
+        Task<CustomerDto> GetByIdAsync(Guid Id, bool trackChanges);
+        Task<CustomerDto> CreateAsync(CustomerCreationDto customerCreationDto);
+        Task DeleteCustomerAsync(Guid Id, bool trackChanges);
+        Task UpdateCustomerAsync(Guid Id, CustomerUpdateDto customer, bool trackChanges);
+        Task<(CustomerUpdateDto customerPatchDto, Customer customer)> GetCustomerForPatchAsync(Guid id, bool trackChanges);
+        Task PatchAsync(CustomerUpdateDto customerPatchDto, Customer customer);
     }
 }

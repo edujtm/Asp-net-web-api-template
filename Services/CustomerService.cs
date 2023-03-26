@@ -21,61 +21,61 @@ namespace Services
             _mapper = mapper;
         }
 
-        public CustomerDto Create(CustomerCreationDto customerCreationDto)
+        public async Task<CustomerDto> CreateAsync(CustomerCreationDto customerCreationDto)
         {
             var customer = _mapper.Map<Customer>(customerCreationDto);
 
             _repository.CustomerRepository.Create(customer);
-            _repository.Save();
+            await _repository.SaveAsync();
 
             return _mapper.Map<CustomerDto>(customer);
         }
 
-        public void DeleteCustomer(Guid Id, bool trackChanges)
+        public async Task DeleteCustomerAsync(Guid Id, bool trackChanges)
         {
-            var customer = _repository.CustomerRepository.GetById(Id, trackChanges);
+            var customer = await _repository.CustomerRepository.GetByIdAsync(Id, trackChanges);
             if (customer == null) { throw new ResourceNotFoundException(Id); }
 
             _repository.CustomerRepository.DeleteCustomer(customer);
-            _repository.Save();
+            await _repository.SaveAsync();
         }
 
-        public IEnumerable<CustomerDto> GetAll(bool trackChanges)
+        public async Task<IEnumerable<CustomerDto>> GetAllAsync(bool trackChanges)
         {
-            var customers = _repository.CustomerRepository.GetAll(trackChanges);
+            var customers = await _repository.CustomerRepository.GetAllAsync(trackChanges);
             return _mapper.Map<IEnumerable<CustomerDto>>(customers);
         }
 
-        public CustomerDto GetById(Guid Id, bool trackChanges)
+        public async Task<CustomerDto> GetByIdAsync(Guid Id, bool trackChanges)
         {
-            var customer = _repository.CustomerRepository.GetById(Id, trackChanges);
+            var customer = await _repository.CustomerRepository.GetByIdAsync(Id, trackChanges);
             if (customer == null) { throw new ResourceNotFoundException(Id); }
             return _mapper.Map<CustomerDto>(customer);
         }
 
-        public (CustomerUpdateDto customerPatchDto, Customer customer) GetCustomerForPatch(Guid id, bool trackChanges)
+        public async Task<(CustomerUpdateDto customerPatchDto, Customer customer)> GetCustomerForPatchAsync(Guid id, bool trackChanges)
         {
-            var customer = _repository.CustomerRepository.GetById(id, trackChanges);
+            var customer = await _repository.CustomerRepository.GetByIdAsync(id, trackChanges);
             if (customer == null) { throw new ResourceNotFoundException(id); }
 
             var customerToPatch = _mapper.Map<CustomerUpdateDto>(customer);
             return (customerToPatch, customer);
         }
 
-        public void Patch(CustomerUpdateDto customerPatchDto, Customer customer)
+        public async Task PatchAsync(CustomerUpdateDto customerPatchDto, Customer customer)
         {
             _mapper.Map(customerPatchDto, customer);
-            _repository.Save();
+            await _repository.SaveAsync();
         }
 
-        public void UpdateCustomer(Guid Id, CustomerUpdateDto customerDto, bool trackChanges)
+        public async Task UpdateCustomerAsync(Guid Id, CustomerUpdateDto customerDto, bool trackChanges)
         {
-            var customerEntity = _repository.CustomerRepository.GetById(Id, trackChanges);
+            var customerEntity = await _repository.CustomerRepository.GetByIdAsync(Id, trackChanges);
             if (customerEntity is null)
                 throw new ResourceNotFoundException(Id);
 
             _mapper.Map(customerDto, customerEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
         }
     }
 }
