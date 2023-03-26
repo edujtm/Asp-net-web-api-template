@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Presentation.ActionFilters;
 using Service.Contracts;
 using Shared.DTOs;
+using Shared.RequestHelper;
+using System.Text.Json;
 
 namespace Presentation.Controllers
 {
@@ -18,9 +20,13 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] CustomerParams customerParams)
         {
-            return Ok(await _serviceManager.CustomerService.GetAllAsync(trackChanges: false));
+            var pagedResult = await _serviceManager.CustomerService.GetAllAsync(customerParams, trackChanges: false);
+
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaDataRequest));
+
+            return Ok(pagedResult.customerDtos);
         }
 
         [HttpGet("{id:guid}", Name = "CustomerById")]

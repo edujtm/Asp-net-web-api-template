@@ -16,7 +16,8 @@ namespace Asp_net_web_api_template.Extensions
              options.AddPolicy("Cors", builder =>
              builder.AllowAnyOrigin()
              .AllowAnyMethod()
-             .AllowAnyHeader());
+             .AllowAnyHeader()
+             .WithExposedHeaders("X-Pagination"));
          });
 
         public static void ConfigureLoggerService(this IServiceCollection services) =>

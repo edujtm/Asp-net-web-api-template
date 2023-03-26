@@ -4,6 +4,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DTOs;
+using Shared.RequestHelper;
 
 namespace Services
 {
@@ -44,10 +45,12 @@ namespace Services
             await _repositoryManager.SaveAsync();
         }
 
-        public async Task<IEnumerable<CustomerDto>> GetAllAsync(bool trackChanges)
+        public async Task<(IEnumerable<CustomerDto> customerDtos, MetaDataRequest metaDataRequest)> GetAllAsync(CustomerParams customerParams, bool trackChanges)
         {
-            var customers = await _repositoryManager.CustomerRepository.GetAllAsync(trackChanges);
-            return _mapper.Map<IEnumerable<CustomerDto>>(customers);
+            var customersWithMetadata = await _repositoryManager.CustomerRepository.GetAllAsync(customerParams, trackChanges);
+            var customersDto = _mapper.Map<IEnumerable<CustomerDto>>(customersWithMetadata);
+
+            return (customerDtos: customersDto, metaDataRequest: customersWithMetadata.MetaDataRequest);
         }
 
         public async Task<CustomerDto> GetByIdAsync(Guid Id, bool trackChanges)
