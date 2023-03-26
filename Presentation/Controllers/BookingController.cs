@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Presentation.ActionFilters;
 using Service.Contracts;
 using Shared.DTOs;
 
@@ -24,10 +25,9 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Create(Guid customerId, [FromBody] BookingCreationDto bookingCreationDto)
         {
-            if (bookingCreationDto == null) { return BadRequest("Booking object mustn't be null."); }
-
             var result = await _serviceManager.BookingService.CreateAsync(customerId, bookingCreationDto, false);
 
             return CreatedAtRoute("GetBookingByCustomerId", new { customerId, id = result.Id }, result);

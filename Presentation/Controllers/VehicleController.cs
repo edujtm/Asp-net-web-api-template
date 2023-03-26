@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Presentation.ActionFilters;
 using Service.Contracts;
 using Shared.DTOs;
 
@@ -25,11 +26,9 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Create([FromBody] VehicleCreationDto vehicleCreationDto)
         {
-            if (vehicleCreationDto is null)
-                return BadRequest("Vehicle object is null.");
-
             var createdVehicle = await _serviceManager.VehicleService.CreateAsync(vehicleCreationDto);
             return CreatedAtRoute("GetVehicleById", new { id = createdVehicle.Id }, createdVehicle);
         }

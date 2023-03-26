@@ -20,30 +20,37 @@ namespace Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<BookingDto>> GetAllAsync(Guid customerId, bool trackChanges)
+        private async Task<Customer> GetCustomerByIdAndCheckExistence(Guid customerId, bool trackChanges)
         {
             var customer = await _repositoryManager.CustomerRepository.GetByIdAsync(customerId, trackChanges);
-            if (customer == null) { throw new ResourceNotFoundException(customerId); }
+            return (customer == null) ? throw new ResourceNotFoundException(customerId) : customer;
+        }
 
-            var bookings = await _repositoryManager.BookingRepository.GetAllAsync(customerId, trackChanges);
+        private async Task<Booking> GetBookingByIdAndCheckExistence(Guid customerId, Guid bookingId, bool trackChanges)
+        {
+            var booking = await _repositoryManager.BookingRepository.GetByIdAsync(customerId, bookingId, trackChanges);
+            return (booking == null) ? throw new ResourceNotFoundException(bookingId) : booking;
+        }
+
+        public async Task<IEnumerable<BookingDto>> GetAllAsync(Guid customerId, bool trackChanges)
+        {
+            var customer = await GetCustomerByIdAndCheckExistence(customerId, trackChanges);
+            var bookings = await _repositoryManager.BookingRepository.GetAllAsync(customer.Id, trackChanges);
+
             return _mapper.Map<IEnumerable<BookingDto>>(bookings);
         }
 
         public async Task<BookingDto> GetByIdAsync(Guid customerId, Guid Id, bool trackChanges)
         {
-            var customer = await _repositoryManager.CustomerRepository.GetByIdAsync(customerId, trackChanges);
-            if (customer == null) { throw new ResourceNotFoundException(customerId); }
-
-            var booking = await _repositoryManager.BookingRepository.GetByIdAsync(customerId, Id, trackChanges);
-            if (booking is null) { throw new ResourceNotFoundException(Id); }
+            var customer = await GetCustomerByIdAndCheckExistence(customerId, trackChanges);
+            var booking = await GetBookingByIdAndCheckExistence(customer.Id, Id, trackChanges);
 
             return _mapper.Map<BookingDto>(booking);
         }
 
         public async Task<BookingDto> CreateAsync(Guid customerId, BookingCreationDto bookingCreationDto, bool trackChanges)
         {
-            var customer = await _repositoryManager.CustomerRepository.GetByIdAsync(customerId, trackChanges: trackChanges);
-            if (customer == null) { throw new ResourceNotFoundException(customerId); }
+            var customer = await GetCustomerByIdAndCheckExistence(customerId, trackChanges);
 
             var vehicle = await _repositoryManager.VehicleRepository.GetByIdAsync(bookingCreationDto.VehicleId, trackChanges: trackChanges);
             if (vehicle == null) { throw new ResourceNotFoundException(bookingCreationDto.VehicleId); }
@@ -58,11 +65,9 @@ namespace Services
 
         public async Task DeleteBookingAsync(Guid customerId, Guid Id, bool trackChanges)
         {
-            var customer = await _repositoryManager.CustomerRepository.GetByIdAsync(customerId, trackChanges);
-            if (customer == null) { throw new ResourceNotFoundException(customerId); }
+            var customer = await GetCustomerByIdAndCheckExistence(customerId, trackChanges);
 
-            var booking = await _repositoryManager.BookingRepository.GetByIdAsync(customerId, Id, trackChanges);
-            if (booking == null) { throw new ResourceNotFoundException(Id); }
+            var booking = await GetBookingByIdAndCheckExistence(customer.Id, Id, trackChanges);
 
             _repositoryManager.BookingRepository.DeleteBooking(booking);
             await _repositoryManager.SaveAsync();

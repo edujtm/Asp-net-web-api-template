@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Options;
 using NLog;
+using Presentation.ActionFilters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nl
 
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
+builder.Services.AddScoped<ValidationFilterAttribute>();
 
 builder.Services.AddControllers(config =>
 {

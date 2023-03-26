@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.ActionFilters;
 using Service.Contracts;
 using Shared.DTOs;
 
@@ -29,14 +30,9 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Create([FromBody] CustomerCreationDto customerCreationDto)
         {
-            if (customerCreationDto is null)
-                return BadRequest("CompanyForCreationDto object is null");
-
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
-
             var createdCustomer = await _serviceManager.CustomerService.CreateAsync(customerCreationDto);
             return CreatedAtRoute("CustomerById", new { id = createdCustomer.Id }, createdCustomer);
         }
@@ -49,14 +45,9 @@ namespace Presentation.Controllers
         }
 
         [HttpPut("{id:guid}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Update(Guid id, [FromBody] CustomerUpdateDto customerDto)
         {
-            if (customerDto is null)
-                return BadRequest("Object is null");
-
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
-
             await _serviceManager.CustomerService.UpdateCustomerAsync(id, customerDto, trackChanges: true);
 
             return NoContent();

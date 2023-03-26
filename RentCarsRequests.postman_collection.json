@@ -106,7 +106,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"20c11b5c-243c-4e41-acff-a2f1072aee2f\",\r\n    \"name\": \"Cricrana da silva\",\r\n    \"email\": \"cricrana@email.com\",\r\n    \"address\": \"Av. Nevaldo Rocha, 3775 - Tirol, Natal - RN, 59015-450\",\r\n    \"dateBirth\": \"1980-01-01\",\r\n    \"bookings\": [\r\n        {\r\n            \"From\": \"2023-05-25\",\r\n            \"To\": \"2023-06-26\",\r\n            \"PaymentReceived\": true,\r\n            \"vehicleId\": \"ACF49E7D-4D0C-4EA0-B3CC-9AEE88B88A7A\"\r\n        },\r\n        {\r\n            \"From\": \"2023-03-24\",\r\n            \"To\": \"2023-04-01\",\r\n            \"PaymentReceived\": false,\r\n            \"vehicleId\": \"AFB387CD-9CA2-4FE6-AFF2-A2163C92CB59\"\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"name\": \"Cricrana da silva\",\r\n    \"email\": \"cricrana@email.com\",\r\n    \"address\": \"Av. Nevaldo Rocha, 3775 - Tirol, Natal - RN, 59015-450\",\r\n    \"dateBirth\": \"1980-01-01\",\r\n    \"bookings\": [\r\n        {\r\n            \"From\": \"2023-05-25\",\r\n            \"To\": \"2023-06-26\",\r\n            \"PaymentReceived\": true,\r\n            \"vehicleId\": \"ACF49E7D-4D0C-4EA0-B3CC-9AEE88B88A7A\"\r\n        },\r\n        {\r\n            \"From\": \"2023-03-24\",\r\n            \"To\": \"2023-04-01\",\r\n            \"PaymentReceived\": false,\r\n            \"vehicleId\": \"AFB387CD-9CA2-4FE6-AFF2-A2163C92CB59\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -147,7 +147,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"op\": \"replace\",\r\n        \"path\": \"/dateBirth\",\r\n        \"value\": \"1960-02-02\"\r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"op\": \"replace\",\r\n        \"path\": \"/dateBirth\",\r\n        \"value\": \"1970-02-02\"\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
