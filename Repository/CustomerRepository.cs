@@ -2,6 +2,7 @@
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Shared.RequestHelper;
+using Repository.Extesions;
 
 namespace Repository
 {
@@ -13,7 +14,10 @@ namespace Repository
 
         public async Task<PagedList<Customer>> GetAllAsync(CustomerParams customerParams, bool trackChanges)
         {
-            var customers = await FindAll(trackChanges).OrderBy(c => c.Name).ToListAsync();
+            var customers = await FindAll(trackChanges)
+                                    .Search(customerParams.SearchTerm)
+                                    .OrderBy(c => c.Name)
+                                    .ToListAsync();
 
             return PagedList<Customer>.ToPagedList(customers, customerParams.PageNumber, customerParams.PageSize);
         }
