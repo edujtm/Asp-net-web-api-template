@@ -5,6 +5,7 @@ using Shared.DTOs;
 
 namespace Presentation.Controllers
 {
+    [ApiVersion("1.0")]
     [Route("api/customers/{customerId}/bookings")]
     [ApiController]
     public class BookingController : ControllerBase

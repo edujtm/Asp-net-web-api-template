@@ -5,6 +5,7 @@ using Shared.DTOs;
 
 namespace Presentation.Controllers
 {
+    [ApiVersion("1.0")]
     [Route("api/vehicles")]
     [ApiController]
     public class VehicleController : ControllerBase
