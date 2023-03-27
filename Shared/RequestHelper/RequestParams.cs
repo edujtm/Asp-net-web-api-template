@@ -19,5 +19,6 @@ namespace Shared.RequestHelper
         }
 
         public string? OrderBy { get; set; }
+        public string? Properties { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.ActionFilters;
+using Presentation.Extensions;
 using Service.Contracts;
 using Shared.DTOs;
 using Shared.RequestHelper;
@@ -26,7 +27,7 @@ namespace Presentation.Controllers
 
             Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaDataRequest));
 
-            return Ok(pagedResult.customerDtos);
+            return Ok(pagedResult.customerDtos.ShapeData(customerParams.Properties));
         }
 
         [HttpGet("{id:guid}", Name = "CustomerById")]

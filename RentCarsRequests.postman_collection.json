@@ -14,7 +14,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7239/api/customers",
+							"raw": "https://localhost:7239/api/customers?searchTerm=a&pageNumber=1&pageSize=2&orderBy=age desc&properties=id,email,age",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -23,6 +23,28 @@
 							"path": [
 								"api",
 								"customers"
+							],
+							"query": [
+								{
+									"key": "searchTerm",
+									"value": "a"
+								},
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								},
+								{
+									"key": "orderBy",
+									"value": "age desc"
+								},
+								{
+									"key": "properties",
+									"value": "id,email,age"
+								}
 							]
 						}
 					},
