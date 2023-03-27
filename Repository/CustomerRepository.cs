@@ -16,7 +16,7 @@ namespace Repository
         {
             var customers = await FindAll(trackChanges)
                                     .Search(customerParams.SearchTerm)
-                                    .OrderBy(c => c.Name)
+                                    .Sort(customerParams.OrderBy)
                                     .ToListAsync();
 
             return PagedList<Customer>.ToPagedList(customers, customerParams.PageNumber, customerParams.PageSize);
