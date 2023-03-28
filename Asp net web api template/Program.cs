@@ -33,6 +33,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true;
 });
 builder.Services.ConfigureVersioning();
+builder.Services.ConfigureIdentity();
 
 NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter() =>
     new ServiceCollection().AddLogging().AddMvc().AddNewtonsoftJson()
@@ -62,6 +63,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 app.UseCors("Cors");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

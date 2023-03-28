@@ -41,6 +41,8 @@ namespace Asp_net_web_api_template
 
             CreateMap<Vehicle, VehicleDto>();
             CreateMap<VehicleCreationDto, Vehicle>();
+
+            CreateMap<UserCreationDto, User>();
         }
     }
 }

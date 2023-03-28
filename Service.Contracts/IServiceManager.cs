@@ -6,5 +6,6 @@ namespace Service.Contracts
         ICustomerService CustomerService { get; }   
         IVehicleService VehicleService { get; } 
         IBookingService BookingService { get; }
+        IAuthenticationService AuthenticationService { get; }
     }
 }

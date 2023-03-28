@@ -12,7 +12,14 @@
 					"name": "GetAll",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "api-version",
+								"value": "0.0",
+								"type": "default",
+								"disabled": true
+							}
+						],
 						"url": {
 							"raw": "https://localhost:7239/api/customers?searchTerm=a&pageNumber=1&pageSize=2&orderBy=age desc&properties=id,email,age",
 							"protocol": "https",
@@ -366,6 +373,40 @@
 								"2c52045b-b323-424e-bf04-c27dcc2e0a33",
 								"bookings",
 								"9987b490-5b67-41b8-a9d6-9cc45b50481d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"test\",\r\n    \"lastName\": \"testLast\",\r\n    \"userName\": \"testte\",\r\n    \"password\": \"testte\",\r\n    \"email\": \"magaiver@email.com\",\r\n    \"phoneNumber\": \"9999999999\",\r\n    \"roles\": [\r\n        \"Customer\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7239/api/authentication",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7239",
+							"path": [
+								"api",
+								"authentication"
 							]
 						}
 					},
