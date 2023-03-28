@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Presentation.ActionFilters;
 using Service.Contracts;
 using Shared.DTOs;
@@ -8,6 +9,7 @@ namespace Presentation.Controllers
     [ApiVersion("1.0")]
     [Route("api/customers/{customerId}/bookings")]
     [ApiController]
+    [Authorize]
     public class BookingController : ControllerBase
     {
         private readonly IServiceManager _serviceManager;

@@ -34,6 +34,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 });
 builder.Services.ConfigureVersioning();
 builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJWT(builder.Configuration);
 
 NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter() =>
     new ServiceCollection().AddLogging().AddMvc().AddNewtonsoftJson()

@@ -21,14 +21,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost:7239/api/customers?searchTerm=a&pageNumber=1&pageSize=2&orderBy=age desc&properties=id,email,age",
-							"protocol": "https",
+							"raw": "{{localhost}}/customers?searchTerm=a&pageNumber=1&pageSize=2&orderBy=age desc&properties=id,email,age",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"customers"
 							],
 							"query": [
@@ -63,14 +60,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7239/api/customers/20C11B5C-243C-4E41-ACFF-A2F1072AEE2F",
-							"protocol": "https",
+							"raw": "{{localhost}}/customers/20C11B5C-243C-4E41-ACFF-A2F1072AEE2F",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"customers",
 								"20C11B5C-243C-4E41-ACFF-A2F1072AEE2F"
 							]
@@ -93,14 +87,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7239/api/customers",
-							"protocol": "https",
+							"raw": "{{localhost}}/customers",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"customers"
 							]
 						}
@@ -113,14 +104,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7239/api/customers/26483254-2974-4035-f95b-08db2d2e71aa",
-							"protocol": "https",
+							"raw": "{{localhost}}/customers/26483254-2974-4035-f95b-08db2d2e71aa",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"customers",
 								"26483254-2974-4035-f95b-08db2d2e71aa"
 							]
@@ -143,14 +131,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7239/api/customers/20C11B5C-243C-4E41-ACFF-A2F1072AEE2F",
-							"protocol": "https",
+							"raw": "{{localhost}}/customers/20C11B5C-243C-4E41-ACFF-A2F1072AEE2F",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"customers",
 								"20C11B5C-243C-4E41-ACFF-A2F1072AEE2F"
 							]
@@ -184,14 +169,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7239/api/customers/20C11B5C-243C-4E41-ACFF-A2F1072AEE2F",
-							"protocol": "https",
+							"raw": "{{localhost}}/customers/20C11B5C-243C-4E41-ACFF-A2F1072AEE2F",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"customers",
 								"20C11B5C-243C-4E41-ACFF-A2F1072AEE2F"
 							]
@@ -210,14 +192,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7239/api/vehicles",
-							"protocol": "https",
+							"raw": "{{localhost}}/vehicles",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"vehicles"
 							]
 						}
@@ -225,19 +204,16 @@
 					"response": []
 				},
 				{
-					"name": "GetById (valid)",
+					"name": "GetById",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7239/api/vehicles/3462f9e4-2bda-4d44-af37-5521a76f1419",
-							"protocol": "https",
+							"raw": "{{localhost}}/vehicles/3462f9e4-2bda-4d44-af37-5521a76f1419",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"vehicles",
 								"3462f9e4-2bda-4d44-af37-5521a76f1419"
 							]
@@ -260,14 +236,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7239/api/vehicles",
-							"protocol": "https",
+							"raw": "{{localhost}}/vehicles",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"vehicles"
 							]
 						}
@@ -285,14 +258,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings",
-							"protocol": "https",
+							"raw": "{{localhost}}/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"customers",
 								"2c52045b-b323-424e-bf04-c27dcc2e0a33",
 								"bookings"
@@ -307,14 +277,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings/9987b490-5b67-41b8-a9d6-9cc45b50481d",
-							"protocol": "https",
+							"raw": "{{localhost}}/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings/9987b490-5b67-41b8-a9d6-9cc45b50481d",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"customers",
 								"2c52045b-b323-424e-bf04-c27dcc2e0a33",
 								"bookings",
@@ -339,14 +306,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings",
-							"protocol": "https",
+							"raw": "{{localhost}}/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"customers",
 								"2c52045b-b323-424e-bf04-c27dcc2e0a33",
 								"bookings"
@@ -361,14 +325,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7239/api/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings/9987b490-5b67-41b8-a9d6-9cc45b50481d",
-							"protocol": "https",
+							"raw": "{{localhost}}/customers/2c52045b-b323-424e-bf04-c27dcc2e0a33/bookings/9987b490-5b67-41b8-a9d6-9cc45b50481d",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"customers",
 								"2c52045b-b323-424e-bf04-c27dcc2e0a33",
 								"bookings",
@@ -390,7 +351,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"test\",\r\n    \"lastName\": \"testLast\",\r\n    \"userName\": \"testte\",\r\n    \"password\": \"testte\",\r\n    \"email\": \"magaiver@email.com\",\r\n    \"phoneNumber\": \"9999999999\",\r\n    \"roles\": [\r\n        \"Customer\"\r\n    ]\r\n}",
+							"raw": "{\r\n    \"firstName\": \"testFirstname\",\r\n    \"lastName\": \"testLastName\",\r\n    \"userName\": \"test\",\r\n    \"password\": \"testPass0\",\r\n    \"email\": \"test@email.com\",\r\n    \"phoneNumber\": \"9999999999\",\r\n    \"roles\": [\r\n        \"Customer\"\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -398,21 +359,82 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7239/api/authentication",
-							"protocol": "https",
+							"raw": "{{localhost}}/authentication",
 							"host": [
-								"localhost"
+								"{{localhost}}"
 							],
-							"port": "7239",
 							"path": [
-								"api",
 								"authentication"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"test\",\r\n    \"password\": \"testPass0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/authentication/login",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"authentication",
+								"login"
 							]
 						}
 					},
 					"response": []
 				}
 			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidGVzdCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkN1c3RvbWVyIiwiZXhwIjoxNjgwMDI1MjYwLCJpc3MiOiJSZW50Q2Fyc0FwaSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjUwMDEifQ.IU3QelTI8Y6I5SdEMuA-R-zojhZEyUguYtWUdyLuK9Q",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "https://localhost:7239/api",
+			"type": "default"
 		}
 	]
 }
