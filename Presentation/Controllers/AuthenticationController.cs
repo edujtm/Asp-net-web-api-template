@@ -37,7 +37,10 @@ namespace Presentation.Controllers
             if (!await _serviceManager.AuthenticationService.ValidateUser(user))
                 return Unauthorized();
 
-            return Ok(new { Token = await _serviceManager.AuthenticationService.CreateToken() });
+            var token = 
+                await _serviceManager.AuthenticationService.CreateToken(setExpiration: true);
+
+            return Ok(token);
         }
 
     }
