@@ -9,7 +9,6 @@ namespace Presentation.Controllers
     [ApiVersion("1.0")]
     [Route("api/vehicles")]
     [ApiController]
-    [Authorize]
     public class VehicleController : ControllerBase
     {
         private readonly IServiceManager _serviceManager;
@@ -17,18 +16,21 @@ namespace Presentation.Controllers
             _serviceManager = serviceManager;
 
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _serviceManager.VehicleService.GetAllAsync(trackChanges: false));
         }
 
         [HttpGet("{id:guid}", Name = "GetVehicleById")]
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> GetById(Guid Id)
         {
             return Ok(await _serviceManager.VehicleService.GetByIdAsync(Id, trackChanges: false));
         }
 
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Create([FromBody] VehicleCreationDto vehicleCreationDto)
         {
