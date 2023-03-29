@@ -14,7 +14,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Entities.ConfigModels;
 using Microsoft.OpenApi.Models;
-using Microsoft.Extensions.Configuration;
 
 namespace Asp_net_web_api_template.Extensions
 {

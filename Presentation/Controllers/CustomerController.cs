@@ -30,7 +30,6 @@ namespace Presentation.Controllers
         /// </summary>
         /// <param name="customerParams"></param>
         /// <returns>The customers list</returns>
-        [HttpGet]
         /// <summary> Create a customer </summary>
         /// <param name="CustomerParams"></param>
         /// <remarks>
@@ -47,6 +46,7 @@ namespace Presentation.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] CustomerParams customerParams)
         {
             var pagedResult = await _serviceManager.CustomerService.GetAllAsync(customerParams, trackChanges: false);
