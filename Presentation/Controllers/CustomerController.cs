@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.ActionFilters;
@@ -14,6 +15,7 @@ namespace Presentation.Controllers
     [Route("api/customers")]
     [ApiController]
     [Authorize]
+    [ApiExplorerSettings(GroupName = "v1")]
     public class CustomerController : ControllerBase
     {
         private readonly IServiceManager _serviceManager;
@@ -23,7 +25,28 @@ namespace Presentation.Controllers
             _serviceManager = serviceManager;
         }
 
+        /// <summary>
+        /// Gets the list of all customers
+        /// </summary>
+        /// <param name="customerParams"></param>
+        /// <returns>The customers list</returns>
         [HttpGet]
+        /// <summary> Create a customer </summary>
+        /// <param name="CustomerParams"></param>
+        /// <remarks>
+        /// Descrição mais longa >>> Lorem Ipsum é simplesmente uma simulação de texto 
+        /// da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
+        /// quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro d
+        /// e modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a edito
+        /// ração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Le
+        /// traset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser in
+        /// tegrado a softwares de editoração eletrônica como Aldus PageMaker.
+        /// </remarks> 
+        /// <returns>Customer created</returns>
+        [ProducesResponseType(typeof(List<CustomerDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> GetAll([FromQuery] CustomerParams customerParams)
         {
             var pagedResult = await _serviceManager.CustomerService.GetAllAsync(customerParams, trackChanges: false);
@@ -39,6 +62,23 @@ namespace Presentation.Controllers
             return Ok(await _serviceManager.CustomerService.GetByIdAsync(Id, trackChanges: false));
         }
 
+        /// <summary> Create a customer </summary>
+        /// <param name="customerCreationDto"></param>
+        /// <remarks>
+        /// Descrição mais longa >>> Lorem Ipsum é simplesmente uma simulação de texto 
+        /// da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
+        /// quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro d
+        /// e modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a edito
+        /// ração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Le
+        /// traset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser in
+        /// tegrado a softwares de editoração eletrônica como Aldus PageMaker.
+        /// </remarks> 
+        /// <returns>Customer created</returns>
+        [ProducesResponseType(typeof(CustomerDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         [HttpPost]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Create([FromBody] CustomerCreationDto customerCreationDto)

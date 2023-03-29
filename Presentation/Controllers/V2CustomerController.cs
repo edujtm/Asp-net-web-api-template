@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Service.Contracts;
 using Shared.RequestHelper;
 
 namespace Presentation.Controllers
@@ -7,6 +6,8 @@ namespace Presentation.Controllers
     [ApiVersion("0.0", Deprecated = true)]
     [Route("api/customers")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v2")]
+
     public class V2CustomerController : ControllerBase
     { 
         [HttpGet]

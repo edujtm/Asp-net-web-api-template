@@ -1,9 +1,11 @@
 using Asp_net_web_api_template.Extensions;
 using AspNetCoreRateLimit;
 using Contracts;
+using Entities.ConfigModels;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using NLog;
 using Presentation.ActionFilters;
@@ -40,6 +42,7 @@ builder.Services.AddJwtConfiguration(builder.Configuration);
 builder.Services.AddMemoryCache();
 builder.Services.ConfigureRateLimitingOptions();
 builder.Services.AddHttpContextAccessor();
+builder.Services.ConfigureSwagger(builder.Configuration);
 
 
 NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter() =>
@@ -75,5 +78,16 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseSwagger();
+app.UseSwaggerUI(s =>
+{
+    var apiDescConfig = new ApiDescriptionConfig();
+    builder.Configuration.Bind(apiDescConfig.Section, apiDescConfig);
+
+    s.SwaggerEndpoint("/swagger/v1/swagger.json", $"{apiDescConfig.ApiName} v1");
+    s.SwaggerEndpoint("/swagger/v2/swagger.json", $"{apiDescConfig.ApiName} v2");
+});
+
 
 app.Run();

@@ -25,7 +25,8 @@
       "launchBrowser": false,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SECRETKEYJWT": "superSecretKeyAjdlksahdjhdsjakdhasljadkhlaskdgdhasdgasgh"
       }
     }
   }
