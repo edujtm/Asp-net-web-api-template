@@ -36,6 +36,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 builder.Services.ConfigureVersioning();
 builder.Services.ConfigureIdentity();
 builder.Services.ConfigureJWT(builder.Configuration);
+builder.Services.AddJwtConfiguration(builder.Configuration);
 builder.Services.AddMemoryCache();
 builder.Services.ConfigureRateLimitingOptions();
 builder.Services.AddHttpContextAccessor();

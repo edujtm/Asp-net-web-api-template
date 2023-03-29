@@ -12,6 +12,7 @@ using Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Entities.ConfigModels;
 
 namespace Asp_net_web_api_template.Extensions
 {
@@ -71,7 +72,9 @@ namespace Asp_net_web_api_template.Extensions
 
         public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
         {
-            var jwtSettings = configuration.GetSection("JwtSettings");
+            var jwtConfig = new JwtConfig();
+            configuration.Bind(jwtConfig.Section, jwtConfig);
+
             var secretKey = Environment.GetEnvironmentVariable("SECRETKEYJWT");
 
             services.AddAuthentication(opt =>
@@ -87,12 +90,16 @@ namespace Asp_net_web_api_template.Extensions
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtSettings["validIssuer"],
-                    ValidAudience = jwtSettings["validAudience"],
+                    ValidIssuer = jwtConfig.ValidIssuer,
+                    ValidAudience = jwtConfig.ValidAudience,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                 };
             });
         }
+
+        public static void AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration) => 
+            services.Configure<JwtConfig>(configuration.GetSection("JwtSettings"));
+
 
         public static void ConfigureRateLimitingOptions(this IServiceCollection services)
         {

@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using Contracts;
+using Entities.ConfigModels;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Service.Contracts;
 
 namespace Services
@@ -20,7 +21,7 @@ namespace Services
             IMapper mapper, 
             UserManager<User> userManager, 
             RoleManager<IdentityRole> roleManager,
-            IConfiguration configuration)
+            IOptions<JwtConfig> configuration)
         {
             _customerService = new Lazy<ICustomerService>(() => new CustomerService(repositoryManager, logger, mapper));
             _vehicleService = new Lazy<IVehicleService>(() => new VehicleService(repositoryManager, logger, mapper));
