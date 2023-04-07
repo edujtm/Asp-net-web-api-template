@@ -1,0 +1,26 @@
+# This dockerfile is to be used in case there's any issue
+# with the ssl configuration for dev environment.
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+
+WORKDIR /publish
+
+COPY ./*.sln ./
+
+# This is a known trick that copies all the csproj files into the image
+# and then creates subfolders based on the name of the csproj file.
+# The csproj files are copied into the work dir and then moved into their
+# respective subfolders
+COPY */*.csproj ./
+RUN for file in $(ls *.csproj); do mkdir -p ${file%.*}/ && mv $file ${file%.*}/; done
+
+RUN dotnet restore Asp_net_web_api_template.sln
+COPY . .
+RUN dotnet publish --output ./dist 
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
+
+WORKDIR /var/www/rent-cars-api/
+COPY --from=build /publish/Api/dist .
+ENV ASPNETCORE_URLS "http://0.0.0.0:5000"
+ENV ASPNETCORE_ENVIRONMENT "Development"
+ENTRYPOINT ["dotnet", "Api.dll"]
