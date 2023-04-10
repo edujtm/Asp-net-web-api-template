@@ -2,6 +2,8 @@
 
 This is a sample ASP.NET Core API that demonstrates how to build a simple RESTful API using ASP.NET Core and C#.
 
+This API was heavily based on [CodeMaze](https://code-maze.com/net-core-series/) and [Asp .Net Web Api Documentation](https://learn.microsoft.com/en-us/aspnet/web-api/).
+
 ## Getting Started
 
 ### Prerequisites
