@@ -14,7 +14,7 @@ namespace Asp_net_web_api_template.ContextFactory
             .Build();
 
             var builder = new DbContextOptionsBuilder<RepositoryContext>()
-            .UseSqlServer(configuration.GetConnectionString("sqlConnection"), b => b.MigrationsAssembly("Asp net web api template"));
+            .UseSqlServer(configuration.GetConnectionString("sqlConnection"), b => b.MigrationsAssembly("Api"));
 
             return new RepositoryContext(builder.Options);
         }
