@@ -11,19 +11,19 @@
     build: 
       context: .
       # To be used if there's any issue with ssl configuration.
-      dockerfile: Dockerfile.onlyhttp 
+      # dockerfile: Dockerfile.onlyhttp 
     environment:
       ConnectionStrings__sqlConnection: "Server=sqlserver,1433;Initial Catalog=RentCars;User ID=sa;Password=root@123;TrustServerCertificate=True"
       SECRETKEYJWT: ${JWT_SECRET_KEY}
-      # Kestrel__Certificates__Default__Path: /https/localhost.pfx
+      Kestrel__Certificates__Default__Path: /https/localhost.pfx
     ports:
       - 5000:5000
       - 5001:5001
     volumes:
     # If using linux
-      - ${HOME}/.aspnet/https:/https
+      # - ${HOME}/.aspnet/https:/https
     # If using windows
-    #  - ${USERPROFILE}/.aspnet/https:/https
+     - ${USERPROFILE}/.aspnet/https:/https
   migrations:
     working_dir: "/app"
     build: 
