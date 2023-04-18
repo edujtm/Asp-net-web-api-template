@@ -4,15 +4,13 @@ This is a sample ASP.NET Core API that demonstrates how to build a simple RESTfu
 
 This API was heavily based on [CodeMaze](https://code-maze.com/net-core-series/) and [Asp .Net Web Api Documentation](https://learn.microsoft.com/en-us/aspnet/web-api/).
 
-## Getting Started
-
-### Prerequisites
+## Prerequisites
 
 - [.NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) 6 or later
 - [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/)
 - [Docker (Optional)](https://www.docker.com/) 
 
-### Running the API (Visual Studio)
+## Running the API (Visual Studio)
 
 1. Clone this repository to your local machine.
 2. Open the solution file `Asp_net_web_api_template.sln` in Visual Studio.
@@ -41,13 +39,22 @@ This API was heavily based on [CodeMaze](https://code-maze.com/net-core-series/)
     ```
 3. Run your API again.
 
+## Running the API (Docker)
+
+1. Clone this repository to your local machine.
+2. Run the following command in the terminal to start the MySQL server:
+
+    ```
+    docker-compose up -d
+    ```
+
 ## API Endpoints
 
 The following endpoint documentations are available in this API:
 
 ### Swager (OpenApi)
 
-`https://localhost:7239/swagger/index.html`
+`https://localhost:7239/swagger/index.html` ou `https://localhost:5001/swagger/index.html`
 
 ### Postman Collection
 
