@@ -365,4 +365,5 @@ FodyWeavers.xsd
 # Secrets from dev environment
 .env
 
-/Asp net web api template/internal_logs/internallog.txt
+Api/internal_logs/internallog.txt
+Api/dist
