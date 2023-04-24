@@ -11,12 +11,14 @@ namespace IntegrationTests;
 public class Tests : BaseTextFixture
 {
 
+    private RepositoryContext _context = null!;
     private CustomerRepository _customerRepository = null!;
 
-    [OneTimeSetUp]
+    [SetUp]
     public void Init()
     {
-        _customerRepository = new CustomerRepository(Context!);
+        _context = CreateDbContext<RepositoryContext>();
+        _customerRepository = new CustomerRepository(_context);
     }
 
     [Test]
@@ -30,7 +32,7 @@ public class Tests : BaseTextFixture
 
         _customerRepository.CreateCustomer(customer);
 
-        await Context!.SaveChangesAsync();
+        await _context.SaveChangesAsync();
 
         var result = await _customerRepository.GetByIdAsync(customer.Id, trackChanges: false);
 
@@ -45,7 +47,7 @@ public class Tests : BaseTextFixture
 
         _customerRepository.CreateCustomer(customer);
 
-        await Context!.SaveChangesAsync();
+        await _context.SaveChangesAsync();
 
         var result = await _customerRepository.GetAllAsync(new CustomerParams { }, trackChanges: false);
 

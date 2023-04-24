@@ -3,6 +3,7 @@ using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Containers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Repository;
 using Respawn;
 using Respawn.Graph;
@@ -19,9 +20,9 @@ namespace IntegrationTests
         private static Respawner _checkpoint = null!;
         public static IMapper Mapper { get; private set; }
 
-        private IContainer? _container;
+        private static IServiceCollection services = new ServiceCollection();
 
-        public static RepositoryContext? Context { get; private set; }
+        private IContainer? _container;
 
         [OneTimeSetUp]
         public async Task SetupDbContainer()
@@ -57,13 +58,22 @@ namespace IntegrationTests
               .UseSqlServer(ConnString)
               .Options;
 
-            Context = new RepositoryContext(options);
-            Context.Database.EnsureCreated();
+            services.AddTransient<RepositoryContext>((_) => new RepositoryContext(options));
+
+            var context = new RepositoryContext(options);
+            context.Database.EnsureCreated();
 
             _checkpoint = Respawner.CreateAsync(ConnString, new RespawnerOptions
             {
                 TablesToIgnore = new Table[] { "__EFmigrationsHistory" }
             }).GetAwaiter().GetResult();
+        }
+
+        public static T CreateDbContext<T>()
+            where T : DbContext
+        {
+            var provider = services.BuildServiceProvider();
+            return provider.GetRequiredService<T>();
         }
 
         public static async Task ResetState()
@@ -74,8 +84,9 @@ namespace IntegrationTests
         [OneTimeTearDown]
         public async Task Teardown()
         {
-            Context?.Database.EnsureDeleted();
-            Context?.Dispose();
+            var context = CreateDbContext<RepositoryContext>();
+            context.Database.EnsureDeleted();
+            context.Dispose();
 
             await _container!.StopAsync();
         }
