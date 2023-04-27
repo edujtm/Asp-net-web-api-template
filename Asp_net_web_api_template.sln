@@ -21,9 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{69105ADE-9D5B-4DFF-B4AD-A9EF29EDCC71}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D180EACE-3A26-4583-8FB4-53C4C6EAB233}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DF91331C-8A8D-4CAD-959A-98A4355D978D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "tests\IntegrationTests\IntegrationTests.csproj", "{53688D14-D7DF-4068-B8FE-10F6270D32C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "tests\IntegrationTests\IntegrationTests.csproj", "{5D22B657-A09C-41C1-A597-ED24287FD699}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,10 +67,10 @@ Global
 		{69105ADE-9D5B-4DFF-B4AD-A9EF29EDCC71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69105ADE-9D5B-4DFF-B4AD-A9EF29EDCC71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69105ADE-9D5B-4DFF-B4AD-A9EF29EDCC71}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53688D14-D7DF-4068-B8FE-10F6270D32C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53688D14-D7DF-4068-B8FE-10F6270D32C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53688D14-D7DF-4068-B8FE-10F6270D32C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53688D14-D7DF-4068-B8FE-10F6270D32C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D22B657-A09C-41C1-A597-ED24287FD699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D22B657-A09C-41C1-A597-ED24287FD699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D22B657-A09C-41C1-A597-ED24287FD699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D22B657-A09C-41C1-A597-ED24287FD699}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +79,6 @@ Global
 		SolutionGuid = {D2F45B7A-D76F-40DA-B9F7-41203855678F}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{53688D14-D7DF-4068-B8FE-10F6270D32C7} = {D180EACE-3A26-4583-8FB4-53C4C6EAB233}
+		{5D22B657-A09C-41C1-A597-ED24287FD699} = {DF91331C-8A8D-4CAD-959A-98A4355D978D}
 	EndGlobalSection
 EndGlobal
